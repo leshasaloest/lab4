@@ -6,14 +6,12 @@ def miller_rabin(n):
         raise Exception('n should b greater than 3.')
     if n % 2 == 0:
         return False, 0
-    # Find u odd such that n-1 = 2^k * u
     u = n - 1
     k = 0
     while u % 2 == 0:
         u //= 2
         k += 1
     a = random.randint(2, n - 2)
-    # b = a^u mod n
     b = pow(a, u, n)
     if b == 1 or b == n - 1:
         return True, a
